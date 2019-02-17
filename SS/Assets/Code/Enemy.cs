@@ -71,24 +71,5 @@ public class Enemy : Ship //Player2
             GetComponent<EnemyLauncher>().FireMissile();
             GetComponent<AudioSource>().PlayOneShot(mlaunch, 0.7F);
         }
-        
-       var mainCamera = Camera.main;
-       if (mainCamera)
-       {
-           var worldPosition = transform.position;
-           var screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
-           var screenMax = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-           var screenMin = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0));
-
-           if (screenPosition.x < - 2
-               || screenPosition.y < - 2
-               || screenPosition.y > Screen.height + 2
-               || screenPosition.x > Screen.width + 2)
-           {
-               //Destroy(gameObject);
-               FindObjectOfType<ScoreKeeper>().P1ScoreIncrease(); //P1 wins
-           }
-
-       }
     }
 }
